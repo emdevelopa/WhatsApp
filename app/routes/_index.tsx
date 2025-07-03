@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Camera, MessageCircle, PhoneCall, Users } from "lucide-react";
+import { Camera, MessageCircle, Phone, PhoneCall, Users } from "lucide-react";
 import { useState } from "react";
-import { FaCamera, FaPhone, FaUsers } from "react-icons/fa";
+import { FaCamera, FaPhone, FaPhoneAlt, FaUsers } from "react-icons/fa";
 import { HiDotsVertical } from "react-icons/hi";
 import { Chats } from "~/screens/chats";
 
@@ -28,8 +28,11 @@ export default function Index() {
           </div>
         </div>
         {/* Screens  */}
-        <div className="flex-1 px-4 overflow-y-auto">
+        <div className="flex-1 px-2 overflow-y-auto">
           {activeTab === "Chats" && <Chats />}
+          {activeTab === "Updates" && <h1>Update Screen</h1>}
+          {activeTab === "Communities" && <h1>Communities</h1>}
+          {activeTab === "Calls" && <h1>Calls</h1>}
         </div>
 
         {/* Bottom Nav */}
@@ -38,29 +41,53 @@ export default function Index() {
             onClick={() => setActiveTab("Chats")}
             className="cursor-pointer flex flex-col items-center justify-center"
           >
-            <MessageCircle className="w-6 h-6 text-white" />
-            <p>Chats</p>
+            <div
+              className={`${
+                activeTab === "Chats" ? "bg-[#00ff0029]" : ""
+              }   px-5 py-2 rounded-2xl`}
+            >
+              <MessageCircle className="w-6 h-6  text-white" />
+            </div>
+            <p className="text-[12px]">Chats</p>
           </div>
           <div
             onClick={() => setActiveTab("Updates")}
             className="cursor-pointer flex flex-col items-center justify-center"
           >
-            <MessageCircle className="w-6 h-6 text-white" />
-            <p>Updates</p>
+            <div
+              className={`${
+                activeTab === "Updates" ? "bg-[#00ff0029]" : ""
+              }   px-5 py-2 rounded-2xl`}
+            >
+              <MessageCircle className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-[12px]">Updates</p>
           </div>
           <div
             onClick={() => setActiveTab("Communities")}
             className="cursor-pointer flex flex-col items-center justify-center"
           >
-            <FaUsers size={24} color="white" />
-            <p>Communities</p>
+            <div
+              className={`${
+                activeTab === "Communities" ? "bg-[#00ff0029]" : ""
+              }   px-5 py-2 rounded-2xl`}
+            >
+              <FaUsers size={24} color="white" />
+            </div>
+            <p className="text-[12px]">Communities</p>
           </div>
           <div
             onClick={() => setActiveTab("Calls")}
             className="cursor-pointer flex flex-col items-center justify-center"
           >
-            <PhoneCall className="w-6 h-6 text-white" />
-            <p>Chats</p>
+            <div
+              className={`${
+                activeTab === "Calls" ? "bg-[#00ff0029]" : ""
+              }   px-5 py-2 rounded-2xl`}
+            >
+              <Phone className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-[12px]">Calls</p>
           </div>
         </div>
       </div>
