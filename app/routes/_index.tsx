@@ -1,5 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Camera, MessageCircle, Phone, PhoneCall, SearchIcon, Users } from "lucide-react";
+import {
+  Camera,
+  MessageCircle,
+  Phone,
+  PhoneCall,
+  SearchIcon,
+  Users,
+} from "lucide-react";
 import { useState } from "react";
 import { FaCamera, FaPhone, FaPhoneAlt, FaUsers } from "react-icons/fa";
 import { HiDotsVertical } from "react-icons/hi";
@@ -21,7 +28,12 @@ export default function Index() {
       <div className="w-full lg:w-[30%] bg-[#030c07] h-full flex flex-col">
         {/* Header */}
         <div className="p-4 flex justify-between items-center flex-shrink-0">
-          <h1 className="text-white font-bold text-[20px]">WhatsApp</h1>
+          <h1 className="text-white font-bold text-[20px]">
+            {activeTab === "Chats" && "WhatsApp"}
+            {activeTab === "Updates" && "Updates"}
+            {activeTab === "Communities" && "Communities"}
+            {activeTab === "Calls" && "Calls"}
+          </h1>
           {/* Icon Side */}
           <div className="flex items-center gap-4">
             {activeTab === "Chats" && <Camera />}
@@ -35,7 +47,7 @@ export default function Index() {
         {/* Screens  */}
         <div className="flex-1 px-2 overflow-y-auto">
           {activeTab === "Chats" && <Chats />}
-          {activeTab === "Updates" && <Updates/>}
+          {activeTab === "Updates" && <Updates />}
           {activeTab === "Communities" && <h1>Communities</h1>}
           {activeTab === "Calls" && <h1>Calls</h1>}
         </div>
@@ -99,4 +111,3 @@ export default function Index() {
     </div>
   );
 }
-

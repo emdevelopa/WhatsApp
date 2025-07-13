@@ -17,7 +17,7 @@ export function ChatScreenFilter({ filterOptions }: ChatScreenFilterProps) {
       {filterOptions.map((option) => (
         <div
           key={option}
-          className={`rounded-3xl px-4 py-1 w-fit border-[0.2px] border-[#f0f0f033] ${
+          className={`rounded-3xl px-4 py-1 w-fit border-[0.2px] cursor-pointer border-[#f0f0f033] ${
             activeFilter === option
               ? "bg-[#26bd2635] text-white"
               : "bg-transparent text-[#5a5a5a] hover:bg-green-100"
