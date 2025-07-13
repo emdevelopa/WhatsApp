@@ -1,9 +1,10 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Camera, MessageCircle, Phone, PhoneCall, Users } from "lucide-react";
+import { Camera, MessageCircle, Phone, PhoneCall, SearchIcon, Users } from "lucide-react";
 import { useState } from "react";
 import { FaCamera, FaPhone, FaPhoneAlt, FaUsers } from "react-icons/fa";
 import { HiDotsVertical } from "react-icons/hi";
 import { Chats } from "~/screens/chats";
+import { Updates } from "~/screens/Updates";
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,13 +25,17 @@ export default function Index() {
           {/* Icon Side */}
           <div className="flex items-center gap-4">
             {activeTab === "Chats" && <Camera />}
+            {["Updates", "Calls"].includes(activeTab) && (
+              <SearchIcon size={20} />
+            )}
+
             <HiDotsVertical />
           </div>
         </div>
         {/* Screens  */}
         <div className="flex-1 px-2 overflow-y-auto">
           {activeTab === "Chats" && <Chats />}
-          {activeTab === "Updates" && <h1>Update Screen</h1>}
+          {activeTab === "Updates" && <Updates/>}
           {activeTab === "Communities" && <h1>Communities</h1>}
           {activeTab === "Calls" && <h1>Calls</h1>}
         </div>
