@@ -27,7 +27,7 @@ export default function Index() {
     <div className="fixed inset-0 flex items-center justify-center w-full h-full text-white">
       <div className="w-full lg:w-[30%] bg-[#030c07] h-full flex flex-col">
         {/* Header */}
-        <div className="p-4 flex justify-between items-center flex-shrink-0">
+        <div className="px-2 py-4 flex justify-between items-center flex-shrink-0">
           <h1 className="text-white font-bold text-[20px]">
             {activeTab === "Chats" && "WhatsApp"}
             {activeTab === "Updates" && "Updates"}
