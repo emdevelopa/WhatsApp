@@ -1,11 +1,32 @@
+import { useState } from "react";
 import { Search, SearchIcon } from "lucide-react";
 import { ChatScreenFilter } from "~/components/chatScreenFilter";
 import { FriendList } from "~/components/friendsLists";
-
+import { ChatRoom } from "~/screens/chatRoom";
 
 const filterOptions = ["All", "Unread", "Favourites", "Groups"] as const;
 
-export function Chats() {
+export function Chats({
+  onChatRoomOpen,
+}: {
+  onChatRoomOpen?: (isOpen: boolean) => void;
+}) {
+  const [selectedFriend, setSelectedFriend] = useState(null);
+
+  const handleFriendSelect = (friend: any) => {
+    setSelectedFriend(friend);
+    onChatRoomOpen?.(true);
+  };
+
+  const handleBack = () => {
+    setSelectedFriend(null);
+    onChatRoomOpen?.(false);
+  };
+
+  if (selectedFriend) {
+    return <ChatRoom friend={selectedFriend} onBack={handleBack} />;
+  }
+
   return (
     <div>
       <div className="bg-[#2727274b] rounded-3xl p-3 flex items-center gap-2">
@@ -22,7 +43,7 @@ export function Chats() {
       </div>
       {/* FriendList */}
       <div className="mt-8 flex flex-col gap-8">
-        <FriendList />
+        <FriendList onFriendSelect={handleFriendSelect} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { ChatScreenFilter } from "~/components/chatScreenFilter";
+import { useState } from "react";
 
 const friends = [
   {
@@ -112,11 +113,25 @@ const getBgClass = (color: string | undefined) => {
   }
 };
 
-export function FriendList() {
+export function FriendList({
+  onFriendSelect,
+}: {
+  onFriendSelect?: (friend: (typeof friends)[0]) => void;
+}) {
+  const handleFriendClick = (friend: (typeof friends)[0]) => {
+    if (onFriendSelect) {
+      onFriendSelect(friend);
+    }
+  };
+
   return (
     <>
       {friends.map((friend, index) => (
-        <>
+        <div
+          key={index}
+          onClick={() => handleFriendClick(friend)}
+          className="cursor-pointer hover:bg-[#ffffff0a] p-2 rounded transition"
+        >
           <div className="flex items-center gap-4">
             <div className="w-[10%]]">
               <div
@@ -149,7 +164,7 @@ export function FriendList() {
               </div>
             </div>
           </div>
-        </>
+        </div>
       ))}
     </>
   );
